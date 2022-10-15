@@ -41,126 +41,140 @@ def gaussian_process_4d(measured_pts, cost, predicted_pts, kernel_params):
 
     return mu_predicted, cov_predicted
 
+def create_dataset(num_samples, t1, t2, A1, A2, pdf_low=0, pdf_high=150, bin_width=1):
+    detector_data = GenerateDataset(t1, t2, A1, A2, pdf_low, pdf_high, num_samples).residuals
+    binning = np.arange(pdf_low, pdf_high+bin_width, bin_width)
+    data_counts, _ = np.histogram(detector_data, bins = binning, density = True)
+    
+    return data_counts
 
+def global_best_dists(model, data, sample_position, TRUE_FEATURES, iteration, save_path):
+    binning = np.arange(0, 150, 1)
+    plt.figure()
+    plt.hist(model, bins = binning, density = True, label = f"t1: {round(sample_position[0],3)} | t2: {round(sample_position[1], 3)} | A1: {round(sample_position[2], 3)} | A2: {round(sample_position[3], 3)}", histtype = "step")
+    plt.hist(data, bins = binning, density = True, label = f"Detector Data | t1: {TRUE_FEATURES[0]} | t2: {TRUE_FEATURES[1]} | A1: {TRUE_FEATURES[2]} | A2: {TRUE_FEATURES[3]}", histtype = "step")
+    plt.legend()
+    plt.ylim((0,0.2))
+    plt.title(f"MC vs Data Agreement | Iteration {iteration}")
+    plt.xlabel("Time Residual (ns)")
+    plt.ylabel("Normalised Counts per 1 ns Bin")
+    plt.savefig(f"{save_path}/{iteration}.png")
+    plt.close()
 
-ITERS = 100
-# amplitude of entire kernel, then std^2 of the input features: {t1, t2, A1, A2}
-SCALE = [1, 0.5]
+# monte-carlo sampling settings
+NUM_SAMPLES = 20000
+T1_TRUE = 5
+T2_TRUE = 15
+A1_TRUE = 0.8
+A2_TRUE = 0.2
+TRUE_FEATURES = [T1_TRUE, T2_TRUE, A1_TRUE, A2_TRUE]
 
+# create the "True" dataset to be obtained by the optimiser
+DATA = create_dataset(NUM_SAMPLES, T1_TRUE, T2_TRUE, A1_TRUE, A2_TRUE)
 
-"""
-HERE WE DEFINE THE MOCK TIME RESIDUAL DATA ARRAYS ETC.
-"""
-# generate fake measured data from detector with "true" parameters t1 = 5.0, t2 = 15.0, A1 = 0.8, A2 = 0.2
-# and N sampled data points
-N = 20000
-# detector_data = generate_dataset(5.0, 15.0, N)
-t1_true = 5
-t2_true = 15
-A1_true = 0.8
-A2_true = 0.2
-detector_data = GenerateDataset(t1_true, t2_true, A1_true, A2_true, 0, 150, N).residuals
-# create a histogram of this dataset. The bin contents will be used to evaluate the MSE of each proposed
-# solution from Bayesian optimizer
-binning = np.arange(0, 151, 1)
-data_counts, _ = np.histogram(detector_data, bins = binning, density = True)
+# optimiser settings
+SAVE_PATH = "frames/4d_residuals"
+ITERATIONS = 100
+SCALE = [1, 0.5]                # RBF kernel amplitude and feature scale factors
+EPSILON = 0.5                   # exploration / convergence factor for acquisition function
+COST  = np.zeros(ITERATIONS)  # measured chi2 difference from sampling true function with given feature vector
+NUM_FEATURES = 4                # number of features to consider
+GLOBAL_BEST = 1e6               # initial value of global best cost 
+GLOBAL_BEST_VALS = []           # array tracks successive global bests over time 
+GLOBAL_BEST_FEATURES = np.zeros((ITERATIONS, NUM_FEATURES))
+CONVERGENCE_COUNT = 0           # NEED TO CHECK THE CONVERGENCE LOGIC
+T1_RES = 1                      # step size of feature 1 domain
+T2_RES = 1                      
+A1_RES = 0.1
+A2_RES = 0.2
+T1_DOMAIN = [1, 10]             # domain of feature 1
+T2_DOMAIN = [10, 20]
+A1_DOMAIN = [0.01, 1]
+A2_DOMAIN = [0.01, 1]
+T1_AXIS = np.arange(T1_DOMAIN[0], T1_DOMAIN[1]+T1_RES, T1_RES) # discretised domain of feature 1
+T2_AXIS = np.arange(T2_DOMAIN[0], T2_DOMAIN[1]+T2_RES, T2_RES) 
+A1_AXIS = np.arange(A1_DOMAIN[0], A1_DOMAIN[1]+A1_RES, A1_RES) 
+A2_AXIS = np.arange(A2_DOMAIN[0], A2_DOMAIN[1]+A2_RES, A2_RES) 
 
-t1_res = 1
-t2_res = 1
-A1_res = 0.1
-A2_res = 0.2
-t1_axis = np.arange(0.1, 5.0, t1_res)
-t2_axis = np.arange(10.0, 30.0, t2_res)
-A1_axis = np.arange(0.01, 1.0, A1_res)
-A2_axis = np.arange(0.01, 1.0, A2_res)
+# set up of optimizer arrays  
+measured_pts = np.zeros((ITERATIONS+1, NUM_FEATURES), dtype = np.float16) # (num_measurements, num_features)
 
-NUM_FEATURES = 4 # t1, t2, A1, A2
-measured_pts = np.zeros((ITERS+1, NUM_FEATURES), dtype = np.float16) # square array, each row is a "measurement", and each column is the value of the features of measurement
-predicted_pts = np.zeros((len(t1_axis), len(t2_axis), len(A1_axis), len(A2_axis), 4), dtype =np.float16)
-for (i, t1_val) in enumerate(t1_axis):
-    for (j, t2_val) in enumerate(t2_axis):
-        for (k, A1_val) in enumerate(A1_axis):
-            for (l, A2_val) in enumerate(A2_axis):
+# predicted points more complicated setup --> need every possible combination of feature vector points 
+predicted_pts = np.zeros((len(T1_AXIS), len(T2_AXIS), len(A1_AXIS), len(A2_AXIS), NUM_FEATURES), dtype =np.float16)
+for (i, t1_val) in enumerate(T1_AXIS):
+    for (j, t2_val) in enumerate(T2_AXIS):
+        for (k, A1_val) in enumerate(A1_AXIS):
+            for (l, A2_val) in enumerate(A2_AXIS):
                 predicted_pts[i,j,k,l,0] = t1_val
                 predicted_pts[i,j,k,l,1] = t2_val
                 predicted_pts[i,j,k,l,2] = A1_val
                 predicted_pts[i,j,k,l,3] = A2_val
-predicted_pts = predicted_pts.reshape(len(t1_axis) * len(t2_axis) * len(A1_axis) * len(A2_axis), 4)
-print(predicted_pts.shape)
-cost = np.zeros(ITERS+1) #track the cost function for each iteration
+# reshape so we have (num_predicted_points, num_features) 2D array
+predicted_pts = predicted_pts.reshape(len(T1_AXIS) * len(T2_AXIS) * len(A1_AXIS) * len(A2_AXIS), NUM_FEATURES)
 
-"""
-TIME RESIDUAL FAKE DATASETS DEFINED: READY TO PASS TO OPTIMISER!
-"""
-
-convergence_count = 0
 last = None
-
-bests = []
-t1_best = []
-t2_best = []
-A1_best = []
-A2_best = []
-global_best = 1e6
-for iter in range(ITERS):
-    print(f"########### iter {iter} ###########")
-    mu_predicted, cov_predicted = gaussian_process_4d(measured_pts, cost, predicted_pts, SCALE)
+for iteration in range(ITERATIONS):
+    print(f"########### iteration {iteration} ###########")
+    
+    # mean and covariance of each predicted point
+    mu_predicted, cov_predicted = gaussian_process_4d(measured_pts, COST, predicted_pts, SCALE)
     std_predicted = np.sqrt(abs(np.diag(cov_predicted)))
 
-    epsilon = 0.5
-    expectedImprovement = acquistion_EXPECTED_IMPROVEMENT(mu_predicted, std_predicted, global_best, epsilon)
+    # given mean, covariance and global best solution, return the expected improvement function at each predicted point
+    expectedImprovement = acquistion_EXPECTED_IMPROVEMENT(mu_predicted, std_predicted, GLOBAL_BEST, EPSILON)
     max_improvement_idx = np.argmax(expectedImprovement)
     
     # maximimise the expected improvement and select it as the next iterations sampling point
-    max_idx = predicted_pts[max_improvement_idx, :]
-    print(f"Best improvement at pred point: {max_idx}")
+    sample_position = predicted_pts[max_improvement_idx, :]      # each row in predicted_pts is a possible sample point
+    print(f"Best improvement at pred point: {sample_position}")
 
-    # find what position this goes to
-    sample_position = [max_idx[0], max_idx[1], max_idx[2], max_idx[3]]
+    # checking convergence of sampling: if same point chosen many times to sample, exit optimisation
     if sample_position == last:
         convergence_count +=1
     else:
+        # reset convergence counter when different sample position chosen
         convergence_count = 0
     last = sample_position
     if convergence_count == 5:
-        print(f"Converged in {iter} iterations.\nGlobal Best Position: ({sample_position[0]},{sample_position[1], sample_position[2], sample_position[3]})")#\nError of minimum: {np.sqrt(sample_position[0]**2 + sample_position[1]**2)}")
+        print(f"Converged in {iteration} iterations.\nGlobal Best Position: {GLOBAL_BEST_FEATURES}")
         break
+    
+    # add the chosen sampled point to the measurements array
+    measured_pts[iteration, 0] = sample_position[0]
+    measured_pts[iteration, 1] = sample_position[1]
+    measured_pts[iteration, 2] = sample_position[2]
+    measured_pts[iteration, 3] = sample_position[3]
 
-    measured_pts[iter, 0] = sample_position[0]
-    measured_pts[iter, 1] = sample_position[1]
-    measured_pts[iter, 2] = sample_position[2]
-    measured_pts[iter, 3] = sample_position[3]
-
+    # for the amplitudes --> normalise them so they sum to 1
     magnitude = sample_position[2] + sample_position[3]
     sample_position[2] /= magnitude
     sample_position[3] /= magnitude
     
-    model = GenerateDataset(sample_position[0], sample_position[1], sample_position[2], sample_position[3], 0, 150, N).residuals
-    # evaluate cost function by histogramming model and finding sum of squared diff between bins
-    model_counts, _ = np.histogram(model, bins = binning, density = True)
-    goodness_of_fit = np.sum((model_counts - data_counts)**2)
-
-    iter_best = goodness_of_fit
-    if iter_best < global_best:
-        global_best = iter_best
-        t1_best.append(sample_position[0])
-        t2_best.append(sample_position[1])
-        A1_best.append(sample_position[2])
-        A2_best.append(sample_position[3])
-        plt.figure()
-        plt.hist(model, bins = binning, density = True, label = f"Iter: {iter} | t1: {sample_position[0]} | t2: {sample_position[1]} | A1: {sample_position[2]} | A2: {sample_position[3]}", histtype = "step")
-        plt.hist(detector_data, bins = binning, density = True, label = f"Detector Data | t1: {t1_true} | t2: {t2_true} | A1: {A1_true} | A2: {A2_true}", histtype = "step")
-        plt.legend()
-        plt.ylim((0,0.2))
-        plt.savefig(f"frames/4d_time_residuals/{iter}.png")
-        plt.close()
-    bests.append(global_best)
+    # use chosen position to generate a fake "monte carlo" simulation
+    model = create_dataset(NUM_SAMPLES, *sample_position)
     
+    # evaluate cost function by histogramming model and finding sum of squared diff between bins
+    goodness_of_fit = np.sum((model - DATA)**2)
 
-    print(f"Global Best Solution: ({t1_best[-1]} {t2_best[-1]} {A1_best[-1]} {A2_best[-1]})")
+    # compare goodness of fit to current global best: if better solution found, save model/data histograms
+    if goodness_of_fit < GLOBAL_BEST:
+        # update global best value
+        GLOBAL_BEST = goodness_of_fit
+        GLOBAL_BEST_FEATURES[iteration, :] = sample_position
+        print(f"NEW GLOBAL BEST SOLUTION: {sample_position}")
 
-    cost[iter] = goodness_of_fit
+        # create plot of true data vs updated best model
+        global_best_dists(model, DATA, sample_position, TRUE_FEATURES, iteration, SAVE_PATH)
+    
+    # update iteration by iteration tracker of global best and cost function
+    GLOBAL_BEST_VALS.append(GLOBAL_BEST)
+    COST[iteration] = goodness_of_fit
 
-plt.plot(bests)
+# display plot of global best over time (to see how many iterations before no further improvement)
+plt.figure()
+plt.plot(np.arange(0, 100, 1), GLOBAL_BEST_VALS)
+plt.title("Global Best " + r"$\chi ^2$" + " vs Iterations")
+plt.xlabel("Iteration")
+plt.ylabel("Global Best " + r"$\chi ^2$")
 plt.yscale("log")
 plt.show()
