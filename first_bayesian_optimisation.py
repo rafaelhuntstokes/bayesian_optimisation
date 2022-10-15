@@ -24,17 +24,20 @@ def kernel_4d(measurements, predictions, scale):
         return rbf
 
 def gaussian_process_4d(measured_pts, cost, predicted_pts, kernel_params):
-    # use the kernel to find the covariance matrix elements
-    # first, the covariance of the observations - N x N square matrix , N = number of observations
+    """
+    Given feature vectors of measured points, sampled cost function at measured points, predicted points, 
+    find the mean prior for every predicted point.
+    """
+    # first, the covariance of the observations, shape (num_measurements, num_measurements)
     cov_11 = kernel_4d(measured_pts, measured_pts, kernel_params)
 
-    # covariance between measured and predicted points - N x M  matrix,  M = number of predicted points
+    # covariance between measured and predicted points, shape (num_measurements, num_predictions)
     cov_12 = kernel_4d(measured_pts, predicted_pts, kernel_params)
     
-    # covariance of the predicted points (this is a square matrix) - M x M square matrix, M = number of predicted points
+    # covariance of the predicted points, shape (num_predictions, num_predictions)
     cov_22 = kernel_4d(predicted_pts, predicted_pts, kernel_params)
     
-    # only invert and multiply sig_21 x sig_22 ^-1 once ...
+    # solve for posterior mean and covariance for every predicted point
     chunk_solved = (np.linalg.inv(cov_11) @ cov_12).T
     mu_predicted = chunk_solved @ cost
     cov_predicted = cov_22 - (chunk_solved @ cov_12)
