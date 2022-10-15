@@ -1,6 +1,7 @@
 from statistics import mean
 import matplotlib.pyplot as plt
 import numpy as np
+import time
 from scipy.stats import norm
 from MONTE_CARLO_SAMPLER import GenerateDataset
 
@@ -101,11 +102,13 @@ T1_AXIS = np.arange(T1_DOMAIN[0], T1_DOMAIN[1]+T1_RES, T1_RES) # discretised dom
 T2_AXIS = np.arange(T2_DOMAIN[0], T2_DOMAIN[1]+T2_RES, T2_RES) 
 A1_AXIS = np.arange(A1_DOMAIN[0], A1_DOMAIN[1]+A1_RES, A1_RES) 
 A2_AXIS = np.arange(A2_DOMAIN[0], A2_DOMAIN[1]+A2_RES, A2_RES) 
+TIME_PER_ITER = [] # track performance as time for each loop to deploy
 
 # set up of optimizer arrays  
 measured_pts = np.zeros((ITERATIONS, NUM_FEATURES), dtype = np.float16) # (num_measurements, num_features)
 
 # predicted points more complicated setup --> need every possible combination of feature vector points 
+predicted_array_start = time.time()
 predicted_pts = np.zeros((len(T1_AXIS), len(T2_AXIS), len(A1_AXIS), len(A2_AXIS), NUM_FEATURES), dtype =np.float16)
 for (i, t1_val) in enumerate(T1_AXIS):
     for (j, t2_val) in enumerate(T2_AXIS):
@@ -115,11 +118,13 @@ for (i, t1_val) in enumerate(T1_AXIS):
                 predicted_pts[i,j,k,l,1] = t2_val
                 predicted_pts[i,j,k,l,2] = A1_val
                 predicted_pts[i,j,k,l,3] = A2_val
+print(f"Took {time.time() - predicted_array_start} s to create predictions.")
 # reshape so we have (num_predicted_points, num_features) 2D array
 predicted_pts = predicted_pts.reshape(len(T1_AXIS) * len(T2_AXIS) * len(A1_AXIS) * len(A2_AXIS), NUM_FEATURES)
 
 last = None
 for iteration in range(ITERATIONS):
+    iter_loop_start = time.time()
     print(f"########### iteration {iteration} ###########")
     
     # mean and covariance of each predicted point
@@ -179,6 +184,8 @@ for iteration in range(ITERATIONS):
     GLOBAL_BEST_VALS.append(GLOBAL_BEST)
     COST[iteration] = goodness_of_fit
 
+    TIME_PER_ITER.append(time.time() - iter_loop_start)
+
 # display plot of global best over time (to see how many iterations before no further improvement)
 plt.figure()
 plt.plot(np.arange(0, iteration+1, 1), GLOBAL_BEST_VALS)
@@ -186,4 +193,12 @@ plt.title("Global Best " + r"$\chi ^2$" + " vs Iterations")
 plt.xlabel("Iteration")
 plt.ylabel("Global Best " + r"$\chi ^2$")
 plt.yscale("log")
+
+plt.figure()
+plt.plot(np.arange(0, iteration+1, 1), TIME_PER_ITER)
+plt.title("Execution time per Iteration")
+plt.xlabel("Iteration")
+plt.ylabel("Time (s)")
+plt.plot([], [], label = f"Average time per Iter: {round(np.mean(TIME_PER_ITER), 3)} s")
+plt.legend()
 plt.show()
