@@ -100,7 +100,7 @@ A1_AXIS = np.arange(A1_DOMAIN[0], A1_DOMAIN[1]+A1_RES, A1_RES)
 A2_AXIS = np.arange(A2_DOMAIN[0], A2_DOMAIN[1]+A2_RES, A2_RES) 
 
 # set up of optimizer arrays  
-measured_pts = np.zeros((ITERATIONS+1, NUM_FEATURES), dtype = np.float16) # (num_measurements, num_features)
+measured_pts = np.zeros((ITERATIONS, NUM_FEATURES), dtype = np.float16) # (num_measurements, num_features)
 
 # predicted points more complicated setup --> need every possible combination of feature vector points 
 predicted_pts = np.zeros((len(T1_AXIS), len(T2_AXIS), len(A1_AXIS), len(A2_AXIS), NUM_FEATURES), dtype =np.float16)
@@ -132,7 +132,7 @@ for iteration in range(ITERATIONS):
     print(f"Best improvement at pred point: {sample_position}")
 
     # checking convergence of sampling: if same point chosen many times to sample, exit optimisation
-    if sample_position == last:
+    if np.array_equal(sample_position, last):
         convergence_count +=1
     else:
         # reset convergence counter when different sample position chosen
