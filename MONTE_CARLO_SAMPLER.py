@@ -3,9 +3,11 @@ import matplotlib.pyplot as plt
 
 class GenerateDataset():
 
-    def __init__(self, t1, t2, bounds_low, bounds_high, numSamples):
+    def __init__(self, t1, t2, A1, A2, bounds_low, bounds_high, numSamples):
         self.t1 = t1
         self.t2 = t2
+        self.A1 = A1
+        self.A2 = A2
         self.low = bounds_low
         self.high = bounds_high
         self.numSamples = numSamples
@@ -13,10 +15,8 @@ class GenerateDataset():
         self.residuals = self.sampler()
 
     def pdf(self, t):
-        A1 = 0.8 # amplitude 1 
-        A2 = 0.2 # amplitude 2
         tr = 0.8 # rise time in ns 
-        return (A1 * (np.exp( -( t/self.t1 )) - np.exp(-( t/tr ) ) )  / ( self.t1 - tr ) ) +  (A2 * (np.exp( -( t/self.t2 ) ) - np.exp( -( t/tr ) )) / ( self.t2 - tr ) )
+        return (self.A1 * (np.exp( -( t/self.t1 )) - np.exp(-( t/tr ) ) )  / ( self.t1 - tr ) ) +  (self.A2 * (np.exp( -( t/self.t2 ) ) - np.exp( -( t/tr ) )) / ( self.t2 - tr ) )
 
     def sampler(self):
         
