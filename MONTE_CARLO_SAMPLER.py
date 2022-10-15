@@ -21,7 +21,7 @@ class GenerateDataset():
     def sampler(self):
         
         # compute the max of the PDF for given t1 and t2
-        t_scan = np.linspace(0, 150, 10000)
+        t_scan = np.linspace(self.low, self.high, 10000)
         pdf_scan = self.pdf(t_scan)
         MAX_PDF = max(pdf_scan)
 

@@ -1,3 +1,4 @@
+from statistics import mean
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
@@ -46,16 +47,18 @@ def gaussian_process_4d(measured_pts, cost, predicted_pts, kernel_params):
 
 def create_dataset(num_samples, t1, t2, A1, A2, pdf_low=0, pdf_high=150, bin_width=1):
     detector_data = GenerateDataset(t1, t2, A1, A2, pdf_low, pdf_high, num_samples).residuals
-    binning = np.arange(pdf_low, pdf_high+bin_width, bin_width)
-    data_counts, _ = np.histogram(detector_data, bins = binning, density = True)
-    
-    return data_counts
+    # binning = np.arange(pdf_low, pdf_high+bin_width, bin_width)
+    # data_counts, _ = np.histogram(detector_data, bins = binning, density = True)
+
+    return detector_data
 
 def global_best_dists(model, data, sample_position, TRUE_FEATURES, iteration, save_path):
     binning = np.arange(0, 150, 1)
     plt.figure()
     plt.hist(model, bins = binning, density = True, label = f"t1: {round(sample_position[0],3)} | t2: {round(sample_position[1], 3)} | A1: {round(sample_position[2], 3)} | A2: {round(sample_position[3], 3)}", histtype = "step")
     plt.hist(data, bins = binning, density = True, label = f"Detector Data | t1: {TRUE_FEATURES[0]} | t2: {TRUE_FEATURES[1]} | A1: {TRUE_FEATURES[2]} | A2: {TRUE_FEATURES[3]}", histtype = "step")
+    # plt.step(binning, model, label = f"t1: {round(sample_position[0],3)} | t2: {round(sample_position[1], 3)} | A1: {round(sample_position[2], 3)} | A2: {round(sample_position[3], 3)}")
+    # plt.step(binning, data, label = f"Detector Data | t1: {TRUE_FEATURES[0]} | t2: {TRUE_FEATURES[1]} | A1: {TRUE_FEATURES[2]} | A2: {TRUE_FEATURES[3]}")
     plt.legend()
     plt.ylim((0,0.2))
     plt.title(f"MC vs Data Agreement | Iteration {iteration}")
@@ -77,7 +80,7 @@ DATA = create_dataset(NUM_SAMPLES, T1_TRUE, T2_TRUE, A1_TRUE, A2_TRUE)
 
 # optimiser settings
 SAVE_PATH = "frames/4d_residuals"
-ITERATIONS = 100
+ITERATIONS = 5
 SCALE = [1, 0.5]                # RBF kernel amplitude and feature scale factors
 EPSILON = 0.5                   # exploration / convergence factor for acquisition function
 COST  = np.zeros(ITERATIONS)  # measured chi2 difference from sampling true function with given feature vector
@@ -155,9 +158,12 @@ for iteration in range(ITERATIONS):
     
     # use chosen position to generate a fake "monte carlo" simulation
     model = create_dataset(NUM_SAMPLES, *sample_position)
-    
+    binning = np.arange(0, 150, 1)
+    model_counts, _ = np.histogram(model, bins = binning, density = True)
+    data_counts, _  = np.histogram(DATA, bins = binning, density = True)
+
     # evaluate cost function by histogramming model and finding sum of squared diff between bins
-    goodness_of_fit = np.sum((model - DATA)**2)
+    goodness_of_fit = np.sum((model_counts - data_counts)**2)
 
     # compare goodness of fit to current global best: if better solution found, save model/data histograms
     if goodness_of_fit < GLOBAL_BEST:
@@ -175,7 +181,7 @@ for iteration in range(ITERATIONS):
 
 # display plot of global best over time (to see how many iterations before no further improvement)
 plt.figure()
-plt.plot(np.arange(0, 100, 1), GLOBAL_BEST_VALS)
+plt.plot(np.arange(0, iteration+1, 1), GLOBAL_BEST_VALS)
 plt.title("Global Best " + r"$\chi ^2$" + " vs Iterations")
 plt.xlabel("Iteration")
 plt.ylabel("Global Best " + r"$\chi ^2$")
