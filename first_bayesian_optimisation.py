@@ -81,7 +81,7 @@ DATA = create_dataset(NUM_SAMPLES, T1_TRUE, T2_TRUE, A1_TRUE, A2_TRUE)
 
 # optimiser settings
 SAVE_PATH = "frames/4d_residuals"
-ITERATIONS = 5
+ITERATIONS = 20
 SCALE = [1, 0.5]                # RBF kernel amplitude and feature scale factors
 EPSILON = 0.5                   # exploration / convergence factor for acquisition function
 COST  = np.zeros(ITERATIONS)  # measured chi2 difference from sampling true function with given feature vector
