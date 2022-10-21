@@ -72,15 +72,17 @@ def global_best_dists(model, data, sample_position, TRUE_FEATURES, iteration, sa
 NUM_SAMPLES = 20000
 T1_TRUE = 5
 T2_TRUE = 15
-A1_TRUE = 0.8
-A2_TRUE = 0.2
-TRUE_FEATURES = [T1_TRUE, T2_TRUE, A1_TRUE, A2_TRUE]
-
-# create the "True" dataset to be obtained by the optimiser
-DATA = create_dataset(NUM_SAMPLES, T1_TRUE, T2_TRUE, A1_TRUE, A2_TRUE)
+T3_TRUE = 120
+T4_TRUE = 450
+A1_TRUE = 0.7
+A2_TRUE = 0.15
+A3_TRUE = 0.1
+A4_TRUE = 0.05
+TRUE_FEATURES = [T1_TRUE, T2_TRUE, T3_TRUE, T4_TRUE, A1_TRUE, A2_TRUE, A3_TRUE, A4_TRUE]
 
 # optimiser settings
 SAVE_PATH = "frames/4d_residuals"
+LOOP_TYPE = "first"             # either first (t1,t2,A1,A2) or second (t3, t4, A3, A4)
 ITERATIONS = 20
 SCALE = [1, 0.5]                # RBF kernel amplitude and feature scale factors
 EPSILON = 0.5                   # exploration / convergence factor for acquisition function
@@ -91,17 +93,29 @@ GLOBAL_BEST_VALS = []           # array tracks successive global bests over time
 GLOBAL_BEST_FEATURES = np.zeros((ITERATIONS, NUM_FEATURES))
 CONVERGENCE_COUNT = 0           # NEED TO CHECK THE CONVERGENCE LOGIC
 T1_RES = 1                      # step size of feature 1 domain
-T2_RES = 1                      
+T2_RES = 1
+T3_RES = 1
+T4_RES = 1               
 A1_RES = 0.1
 A2_RES = 0.2
+A3_RES = 0.2
+A4_RES = 0.2
 T1_DOMAIN = [1, 10]             # domain of feature 1
 T2_DOMAIN = [10, 20]
+T3_DOMAIN = [50, 200]
+T4_DOMAIN = [300, 500]
 A1_DOMAIN = [0.01, 1]
 A2_DOMAIN = [0.01, 1]
+A3_DOMAIN = [0.01, 1]
+A4_DOMAIN = [0.01, 1]
 T1_AXIS = np.arange(T1_DOMAIN[0], T1_DOMAIN[1]+T1_RES, T1_RES) # discretised domain of feature 1
-T2_AXIS = np.arange(T2_DOMAIN[0], T2_DOMAIN[1]+T2_RES, T2_RES) 
+T2_AXIS = np.arange(T2_DOMAIN[0], T2_DOMAIN[1]+T2_RES, T2_RES)
+T3_AXIS = np.arange(T3_DOMAIN[0], T3_DOMAIN[1]+T3_RES, T3_RES) 
+T4_AXIS = np.arange(T4_DOMAIN[0], T4_DOMAIN[1]+T4_RES, T4_RES) 
 A1_AXIS = np.arange(A1_DOMAIN[0], A1_DOMAIN[1]+A1_RES, A1_RES) 
 A2_AXIS = np.arange(A2_DOMAIN[0], A2_DOMAIN[1]+A2_RES, A2_RES) 
+A3_AXIS = np.arange(A3_DOMAIN[0], A3_DOMAIN[1]+A3_RES, A3_RES) 
+A4_AXIS = np.arange(A4_DOMAIN[0], A4_DOMAIN[1]+A4_RES, A4_RES) 
 TIME_PER_ITER = [] # track performance as time for each loop to deploy
 
 # set up of optimizer arrays  
@@ -109,18 +123,55 @@ measured_pts = np.zeros((ITERATIONS, NUM_FEATURES), dtype = np.float16) # (num_m
 
 # predicted points more complicated setup --> need every possible combination of feature vector points 
 predicted_array_start = time.time()
-predicted_pts = np.zeros((len(T1_AXIS), len(T2_AXIS), len(A1_AXIS), len(A2_AXIS), NUM_FEATURES), dtype =np.float16)
-for (i, t1_val) in enumerate(T1_AXIS):
-    for (j, t2_val) in enumerate(T2_AXIS):
-        for (k, A1_val) in enumerate(A1_AXIS):
-            for (l, A2_val) in enumerate(A2_AXIS):
+if LOOP_TYPE == "first" or LOOP_TYPE == "first_0":
+    T3_BEST = 50
+    T4_BEST = 300
+    A3_BEST = 
+    A4_BEST =
+    AXIS_1 = T1_AXIS
+    AXIS_2 = T2_AXIS
+    AXIS_3 = A1_AXIS
+    AXIS_4 = A2_AXIS
+
+    # fill input array for create_dataset with variables to be held constant
+    input_sample = np.zeros(8)
+    input_sample[2] = 50
+    input_sample[3] = 300
+    input_sample[6] = 0.01
+    input_sample[7] = 0.01
+    if LOOP_TYPE == "first_0":
+        # create the "True" dataset to be obtained by the optimiser
+        DATA = create_dataset(NUM_SAMPLES, *TRUE_FEATURES)
+        np.save("DATA.npy", DATA)
+    else:
+        DATA = np.load("DATA.npy")
+if LOOP_TYPE == "second":
+    AXIS_1 = T3_AXIS
+    AXIS_2 = T4_AXIS
+    AXIS_3 = A2_AXIS
+    AXIS_4 = A3_AXIS
+
+    # fill input array for create_dataset with variables to be held constant
+    input_sample = np.zeros(8)
+    input_sample[0] = None
+    input_sample[1] = None
+    input_sample[4] = None
+    input_sample[5] = None
+
+    DATA = np.load("DATA.npy")
+
+predicted_pts = np.zeros((len(AXIS_1), len(AXIS_2), len(AXIS_3), len(AXIS_4), NUM_FEATURES), dtype =np.float16)
+for (i, t1_val) in enumerate(AXIS_1):
+    for (j, t2_val) in enumerate(AXIS_2):
+        for (k, A1_val) in enumerate(AXIS_3):
+            for (l, A2_val) in enumerate(AXIS_4):
                 predicted_pts[i,j,k,l,0] = t1_val
                 predicted_pts[i,j,k,l,1] = t2_val
                 predicted_pts[i,j,k,l,2] = A1_val
                 predicted_pts[i,j,k,l,3] = A2_val
 print(f"Took {time.time() - predicted_array_start} s to create predictions.")
 # reshape so we have (num_predicted_points, num_features) 2D array
-predicted_pts = predicted_pts.reshape(len(T1_AXIS) * len(T2_AXIS) * len(A1_AXIS) * len(A2_AXIS), NUM_FEATURES)
+predicted_pts = predicted_pts.reshape(len(AXIS_1) * len(AXIS_2) * len(AXIS_3) * len(AXIS_4), NUM_FEATURES)
 
 last = None
 for iteration in range(ITERATIONS):
@@ -156,13 +207,23 @@ for iteration in range(ITERATIONS):
     measured_pts[iteration, 2] = sample_position[2]
     measured_pts[iteration, 3] = sample_position[3]
 
-    # for the amplitudes --> normalise them so they sum to 1
-    magnitude = sample_position[2] + sample_position[3]
-    sample_position[2] /= magnitude
-    sample_position[3] /= magnitude
+    # fill in the sample positions (correctly normalised) into the input_sample array that includes variables held constant
+    # get all the nonzero idx of sample_positions (previously filled values)
+    nonzero_idx = np.nonzero(input_sample)
+    idx_count = 0
+    for idx in range(0, 8):
+        if idx not in nonzero_idx:
+            # we have a position not filled in, so fill it
+            input_sample[idx] = sample_position[idx_count]
+            idx_count += 1
+    # normalise all the amplitudes to sum to 1
+    magnitude = np.sum(input_sample[4:])
+    input_sample[4:] = input_sample[4:] / magnitude
+    
+    # get the inputs to MC faker correct, depending on what LOOP_TYPE (t1,t2,a1,a2) or (t3,t4,a3,a4)
     
     # use chosen position to generate a fake "monte carlo" simulation
-    model = create_dataset(NUM_SAMPLES, *sample_position)
+    model = create_dataset(NUM_SAMPLES, *input_sample)
     binning = np.arange(0, 150, 1)
     model_counts, _ = np.histogram(model, bins = binning, density = True)
     data_counts, _  = np.histogram(DATA, bins = binning, density = True)
