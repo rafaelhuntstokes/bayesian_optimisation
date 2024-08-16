@@ -1,0 +1,3 @@
+
+Max iters reached. Beginning next node . . .
+We have finished running the optimisation. Creating final plots and exiting ...

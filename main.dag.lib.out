@@ -1,0 +1,606 @@
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+File for submitting this DAG to HTCondor           : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub
+Log of DAGMan debugging messages                 : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.out
+Log of HTCondor library output                     : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.out
+Log of HTCondor library error messages             : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.lib.err
+Log of the life of condor_dagman itself          : /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.dagman.log
+
+-no_submit given, not submitting DAG to HTCondor.  You can do this with:
+"condor_submit /home/hunt-stokes/bayesian_optimisation/dag_templates/tune_subdag.dag.condor.sub"
+-----------------------------------------------------------------------
+Executing condor dagman ... 

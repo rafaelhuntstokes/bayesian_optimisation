@@ -1,0 +1,6 @@
+executable = executables/select_parameters.sh
+log        = condor_logs/select_logs/$(Process).log
+output     = condor_logs/select_outputs/$(Process).out
+error      = condor_logs/select_errors/$(Process).err
+
+queue

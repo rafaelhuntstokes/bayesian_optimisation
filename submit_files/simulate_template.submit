@@ -1,0 +1,7 @@
+executable = executables/submit_simulations.sh
+arguments  = $(Process) ${MAC_NAME}
+log        = condor_logs/sim_logs/$(Process).log
+output     = condor_logs/sim_outputs/$(Process).out
+error      = condor_logs/sim_errors/$(Process).err
+
+queue 50

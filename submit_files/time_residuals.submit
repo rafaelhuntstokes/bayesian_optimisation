@@ -1,0 +1,6 @@
+executable = executables/time_residuals.sh
+log        = condor_logs/residuals_logs/$(Process).log
+output     = condor_logs/residuals_outputs/$(Process).out
+error      = condor_logs/residuals_errors/$(Process).err
+
+queue
