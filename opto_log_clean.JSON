@@ -21,6 +21,14 @@
         "A3": 0.05,
         "A4": 0.05
     },
+    "covergence_flags": {
+        "conv_points": 0,
+        "T1": false,
+        "T2": false,
+        "T3": false,
+        "T4": false,
+        "TR": false
+    },
     "current_parameters": [
         0,
         4
@@ -28,6 +36,7 @@
     "current_iteration": 0,
     "max_iteration": 10,
     "global_best": {
+        "name" : "none",
         "objective": 1e9,
         "parameters": {
             "T1" : 999,

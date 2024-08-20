@@ -93,7 +93,7 @@ l4     = np.linspace(50, 100, 50)
 ltheta = np.linspace(0.01, 2, 20)
 length_scales = np.array([l1, l2, l3, l4, ltheta, ltheta, ltheta, ltheta, l1])
 feature_spaces = np.array([t1, t2, t3, t4, theta, theta, theta, theta, tr])
-feature_names  = ["T1", "T2", "T3", "T4", "theta1", "theta2", "theta3", "theta4", "TR"]
+feature_names  = ["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"]
 
 # load up the JSON log file to find the current iteration
 log = open("opto_log.JSON")
@@ -237,6 +237,14 @@ else:
         updated_weights    = sum_normalisation(params_update[4:8], current_parameters[1]-4)
         params_update[4:8] = updated_weights
 
+        # check for convergence in the updated parameters
+        last_measured   = np.array([log["last_measured"][f"{feature_name[0]}"], log["last_measured"][f"{feature_name[1]}"]])
+        perc_difference = np.abs(last_measured - np.array(updated_features) ) / np.array(updated_features)
+        print(f"Previous sample was at {last_measured} and new sample is {updated_features} ( {perc_difference} % difference ).")
+        if np.all(perc_difference < 0.05):
+            # we have a converged solution
+            log["covergence_flags"]["conv_points"] = log["covergence_flags"]["conv_points"] + 1
+        
         # update the parameters in the JSON log
         log["last_measured"]["T1"] = params_update[0]
         log["last_measured"]["T2"] = params_update[1]
@@ -299,6 +307,17 @@ else:
         params_update = np.array(decay_constants + amplitudes + rise_time)
         params_update[current_parameters] = updated_features
 
+        # update the parameters in question with the next sample point
+        create_macro(params_update[0:4], params_update[4:8], params_update[8], material, feature_name)
+
+        # check if the sampled point is on a convergence path - i.e. if the next measured point is within 5 % of the previous sample
+        last_measured   = log["last_measured"]["TR"]
+        perc_difference = abs(params_update[8] - last_measured) / last_measured
+        print(f"Previous sample was at {last_measured} and new sample is {params_update[8]} ( {perc_difference} % difference ).")
+        if perc_difference <= 0.05:
+            # incrememnt the convergence counter
+            log["covergence_flags"]["conv_points"] = log["covergence_flags"]["conv_points"] + 1
+        
         # update the parameters in the JSON log
         log["last_measured"]["T1"] = params_update[0]
         log["last_measured"]["T2"] = params_update[1]
@@ -312,6 +331,3 @@ else:
 
         with open("opto_log.JSON", "w") as config_file:
             json.dump(log, config_file, indent = 4)
-
-        # update the parameters in question with the next sample point
-        create_macro(params_update[0:4], params_update[4:8], params_update[8], material, feature_name)
