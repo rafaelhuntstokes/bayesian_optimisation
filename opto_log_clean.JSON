@@ -21,7 +21,7 @@
         "A3": 0.05,
         "A4": 0.05
     },
-    "covergence_flags": {
+    "convergence_flags": {
         "conv_points": 0,
         "T1": false,
         "T2": false,
@@ -50,5 +50,6 @@
             "A4" : 999
         }
     },
-    "terminate_flag": 0
+    "terminate_flag": 0,
+    "remaining_weighting_budget": 1.0
 }

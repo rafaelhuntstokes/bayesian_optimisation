@@ -16,14 +16,14 @@ def update_optimisation_parameters(log, converged_flag):
     if current_parameters[-1] == 7:
         # we enter the rise time tuning regime
         log["current_parameters"] = [8]
-        logfile.write(f"\nMax iters reached. Beginning next optimisation of Rise Time (param idx {log["current_parameters"]}).")
+        logfile.write(f"\nBeginning next optimisation of Rise Time (param idx {log['current_parameters']}).")
     elif current_parameters[-1] == 8:
-        logfile.write(f"\nWe have finished optimising all parameters. The best solution was: \n{log["global_best"]}.\nExiting!")
+        logfile.write(f"\nWe have finished optimising all parameters. The best solution was: \n{log['global_best']}.\nExiting!")
         sys.exit(0)
     else:
-        logfile.write(f"\nMax iters reached. Beginning next optimisation of param idxs: {log["current_parameters"]}).")
         log["current_parameters"] = [current_parameters[0]+1, current_parameters[1]+1]
-
+        logfile.write(f"\nBeginning next optimisation of param idxs: {log['current_parameters']}.")
+    
     if converged_flag == False:
         logfile.write(f"\nNo convergence. Updating default simulation parameters to:\n{log['global_best']['parameters']}.")
     
@@ -54,12 +54,12 @@ with open("opto_log.JSON", "r") as logfile:
 # work out if we are at the final iteration - write output to logfile.
 with open("/home/hunt-stokes/bayesian_optimisation/post_log.txt", "a") as logfile:
 
-    logfile.write(f"\nWe have reached the end of iteration {log["current_iteration"]} for parameter(s) {log["current_parameters"]}.")
+    logfile.write(f"\nWe have reached the end of iteration {log['current_iteration']} for parameter(s) {log['current_parameters']}.")
     if log["terminate_flag"] == True:
         logfile.write(f"\nKS-test PASSED. Use last measured point as tuning: \
-                      Time Constants: {log["last_measured"]["T1"]}, {log["last_measured"]["T2"]}, {log["last_measured"]["T3"]}, {log["last_measured"]["T4"]}\n \
-                      Amplitudes: {log["last_measured"]["A1"]}, {log["last_measured"]["A2"]}, {log["last_measured"]["A3"]}, {log["last_measured"]["A4"]}\n \
-                      Rise Time: {log["last_measured"]["TR"]}.")
+                      Time Constants: {log['last_measured']['T1']}, {log['last_measured']['T2']}, {log['last_measured']['T3']}, {log['last_measured']['T4']}\n \
+                      Amplitudes: {log['last_measured']['A1']}, {log['last_measured']['A2']}, {log['last_measured']['A3']}, {log['last_measured']['A4']}\n \
+                      Rise Time: {log['last_measured']['TR']}.")
         sys.exit(100) # custom exit code that instructs the entire dag to exit
     
     if log["current_iteration"] < log["max_iteration"]:
@@ -95,7 +95,7 @@ with open("/home/hunt-stokes/bayesian_optimisation/post_log.txt", "a") as logfil
         else:
             # not converged and not reached max iters so begin next loop!
             log["current_iteration"] = log["current_iteration"] + 1
-            logfile.write(f"\nBeginning next loop as iteration: (iteration {log["current_iteration"]}).")
+            logfile.write(f"\nBeginning next loop as iteration: (iteration {log['current_iteration']}).")
         
             with open("opto_log.JSON", "w") as outlog:
                 json.dump(log, outlog, indent = 4)

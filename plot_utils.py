@@ -6,7 +6,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.stats import ks_2samp
 from scipy.interpolate import interp1d
-
+import json
 
 """
 Series of plotting functions to create intermediate plots of the surrogates, 
@@ -96,7 +96,7 @@ def surrogate_uncert_acquistion_1d(mean, uncertainty, acquisition, axis, name, i
     fig, axes = plt.subplots(nrows = 1, ncols = 2)
 
     axes[0].plot(axis, mean, color = "black", linestyle = "--")
-    axes[0].scatter(measured_pts[:,0], measured_pts[:,1], color = "black", marker = "o")
+    axes[0].scatter(measured_pts[:-1,0], measured_pts[:-1,1], color = "black", marker = "o")
     axes[0].fill_between(axis[:,0], np.atleast_1d(mean-uncertainty), np.atleast_1d(mean+uncertainty), alpha = 0.6, color = "red")
 
     axes[1].plot(axis, acquisition, color = "black")
@@ -123,12 +123,28 @@ def time_residual_agreement(data, model, name):
         cdf    = np.arange(1, len(distro)+1) / len(distro)
 
         return distro, cdf
-     
+    
+    with open("opto_log.JSON", "r") as logfile:
+        log = json.load(logfile)
+    
+    current_parameters = log["current_parameters"]
+    # find the parameter values used
+    parameter_names    = np.array(["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"])
+    names              = parameter_names[current_parameters]
     fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (15, 5))
     binning = np.arange(-5, 350, 1)
-
+    if len(names) == 2:
+        values      = [log["last_measured"][names[0]], log["last_measured"][names[1]]]
+        axes[0].plot([], [], linestyle = "", label = f"{names[0]}: {values[0]:.3f} ns | {names[1]} : {values[1]:.3f}")
+        axes[1].plot([], [], linestyle = "", label = f"{names[0]}: {values[0]:.3f} ns | {names[1]} : {values[1]:.3f}")
+    else:
+        values      = log["last_measured"]["TR"]
+        axes[0].plot([], [], linestyle = "", label = f"Rise Time: {values:.3f} ns")
+        axes[1].plot([], [], linestyle = "", label = f"Rise Time: {values:.3f} ns")
+    
     axes[0].hist(data, bins = binning, density = True, histtype = "step", color = "black", linewidth = 2, label = "data")
     axes[0].hist(model, bins = binning, density = True, histtype = "step", color = "red", linewidth = 2, label = "MC")
+    
     axes[0].set_xlim((-5, 100))
     axes[0].set_xlabel("Time Residual [ns]")
     axes[0].legend()

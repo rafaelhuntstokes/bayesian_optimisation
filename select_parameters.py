@@ -39,7 +39,7 @@ def create_macro(decay_consts, amplitudes, rise_time, material, name):
         log        = condor_logs/sim_logs/$(Process).log
         output     = condor_logs/sim_outputs/$(Process).out
         error      = condor_logs/sim_errors/$(Process).err
-
+        request_memory = 1024MB
         queue 50
         """.format(MAC_NAME = f"{name}"))
         
@@ -73,31 +73,33 @@ def sum_normalisation(vec_weights, keep_idx):
     print(f"Sanity check! The weights are: {vec_weights} and they sum to: {np.sum(vec_weights)}.")
 
     return vec_weights
-    
-
-# define the feature space for each parameter
-size     = 50 # using the same granuality for each feature - probably not great
-material = "labppo_2p2_scintillator"
-t1       = np.linspace(1, 6, size)
-t2       = np.linspace(10, 50, size)
-t3       = np.linspace(60, 150, size)
-t4       = np.linspace(200, 500, size)
-tr       = np.linspace(0.1, 2.0, size)
-theta    = np.linspace(0.01, 1.0, size)
-
-# also need to define the length scales over which to tune the constants for each parameter
-l1     = np.linspace(0.01, 5, 50)
-l2     = np.linspace(2, 10, 50)
-l3     = np.linspace(10, 30, 50)
-l4     = np.linspace(50, 100, 50)
-ltheta = np.linspace(0.01, 2, 20)
-length_scales = np.array([l1, l2, l3, l4, ltheta, ltheta, ltheta, ltheta, l1])
-feature_spaces = np.array([t1, t2, t3, t4, theta, theta, theta, theta, tr])
-feature_names  = ["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"]
 
 # load up the JSON log file to find the current iteration
 log = open("opto_log.JSON")
 log = json.load(log)
+
+# define the feature space for each parameter
+size     = 50 # using the same granuality for each feature - probably not great
+material = "labppo_2p2_scintillator"
+t1       = np.linspace(1, 7, size)
+t2       = np.linspace(10, 50, size)
+t3       = np.linspace(60, 150, size)
+t4       = np.linspace(200, 500, size)
+tr       = np.linspace(0.1, 2.0, size)
+
+# work out how much weighting 'budget' left after fixing the previous decay constants
+max_weight = log["remaining_weighting_budget"]
+theta    = np.linspace(0.01, max_weight, size)
+
+# also need to define the length scales over which to tune the constants for each parameter
+l1     = np.linspace(0.5, 5, 50)   # do not make the minimum values too small or it blows the kernel up!
+l2     = np.linspace(2, 10, 50)
+l3     = np.linspace(10, 30, 50)
+l4     = np.linspace(50, 100, 50)
+ltheta = np.linspace(0.1, 2, 20)  
+length_scales = np.array([l1, l2, l3, l4, ltheta, ltheta, ltheta, ltheta, l1])
+feature_spaces = np.array([t1, t2, t3, t4, theta, theta, theta, theta, tr])
+feature_names  = ["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"]
 
 iteration = log["current_iteration"]
 print(f"\n###### Iteration {iteration} #####\n")
@@ -238,13 +240,15 @@ else:
         params_update[4:8] = updated_weights
 
         # check for convergence in the updated parameters
-        last_measured   = np.array([log["last_measured"][f"{feature_name[0]}"], log["last_measured"][f"{feature_name[1]}"]])
+        last_measured   = np.array([log["last_measured"][f"{feature_names[current_parameters[0]]}"], log["last_measured"][f"{feature_names[current_parameters[1]]}"]])
         perc_difference = np.abs(last_measured - np.array(updated_features) ) / np.array(updated_features)
         print(f"Previous sample was at {last_measured} and new sample is {updated_features} ( {perc_difference} % difference ).")
         if np.all(perc_difference < 0.05):
             # we have a converged solution
-            log["covergence_flags"]["conv_points"] = log["covergence_flags"]["conv_points"] + 1
-        
+            log["convergence_flags"]["conv_points"] = log["convergence_flags"]["conv_points"] + 1
+        else:
+            log["convergence_flags"]["conv_points"] = 0
+            # reset the conv counter to zero
         # update the parameters in the JSON log
         log["last_measured"]["T1"] = params_update[0]
         log["last_measured"]["T2"] = params_update[1]
@@ -316,8 +320,10 @@ else:
         print(f"Previous sample was at {last_measured} and new sample is {params_update[8]} ( {perc_difference} % difference ).")
         if perc_difference <= 0.05:
             # incrememnt the convergence counter
-            log["covergence_flags"]["conv_points"] = log["covergence_flags"]["conv_points"] + 1
-        
+            log["convergence_flags"]["conv_points"] = log["convergence_flags"]["conv_points"] + 1
+        else:
+            log["convergence_flags"]["conv_points"] = 0
+
         # update the parameters in the JSON log
         log["last_measured"]["T1"] = params_update[0]
         log["last_measured"]["T2"] = params_update[1]

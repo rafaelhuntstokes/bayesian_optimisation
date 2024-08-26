@@ -1,6 +1,6 @@
 executable = executables/time_residuals.sh
-log        = condor_logs/residuals_logs/$(Process).log
-output     = condor_logs/residuals_outputs/$(Process).out
-error      = condor_logs/residuals_errors/$(Process).err
-
+log        = condor_logs/residuals_logs/$(Cluster)_$(Process).log
+output     = condor_logs/residuals_outputs/$(Cluster)_$(Process).out
+error      = condor_logs/residuals_errors/$(Cluster)_$(Process).err
+request_memory = 1024MB
 queue

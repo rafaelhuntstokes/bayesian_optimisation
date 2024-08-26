@@ -97,7 +97,7 @@ def ks_test(data, model):
 # load the JSON log
 with open("opto_log.JSON", "r") as infile:
     log = json.load(infile)
-feature_names  = np.array(["T1", "T2", "T3", "T4", "theta1", "theta2", "theta3", "theta4", "TR"])
+feature_names  = np.array(["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"])
 current_params = np.array(log["current_parameters"])
 if len(current_params) == 2:
     print(current_params)
@@ -138,6 +138,7 @@ chi2_stat, p_value = chisquare(f_obs = binned_data, f_exp = binned_sim)
 print(dof, chi2_stat)
 
 ks_stat, ks_p_val = ks_test(data_residuals, time_residuals)
+ks_stat           = ks_stat * 1000 # boost it so it's a significant deviation from the mean
 
 # check if the chi2 statistic < global best:
 # if chi2_stat < log["global_best"]["objective"]:
@@ -158,6 +159,13 @@ if ks_stat < log["global_best"]["objective"]:
     log["global_best"]["parameters"]["A3"] = log["last_measured"]["A3"]
     log["global_best"]["parameters"]["A4"] = log["last_measured"]["A4"]
 
+    # save what parameter and iterations led to this global best
+    parameter_names = ["T1", "T2", "T3", "T4"]
+    current_params  = log["current_parameters"]
+    if current_params == 8:
+        log["global_best"]["name"] = f"TR_iter_{log['current_iteration']}"
+    else:
+        log["global_best"]["name"] = f"{parameter_names[current_params[0]]}_iter_{log['current_iteration']}"
     with open("opto_log.JSON", "w") as outfile:
         json.dump(log, outfile, indent = 4)
 
@@ -199,8 +207,8 @@ if os.path.isfile(f"/home/hunt-stokes/bayesian_optimisation/{measured_pts}") == 
         measured_vals[-1, 2] = ks_stat
     print(measured_vals, measured_vals.shape)
     np.save(f"/home/hunt-stokes/bayesian_optimisation/{measured_pts}", measured_vals)
-else:
-    # this is probably the first iteration so need to create it
-    # measured_vals = [chi2_stat]
-    measured_vals = [ks_stat]
-    np.save("/home/hunt-stokes/bayesian_optimisation/measured_vals.npy", measured_vals)
+# else:
+#     # this is probably the first iteration so need to create it
+#     # measured_vals = [chi2_stat]
+#     measured_vals = [ks_stat]
+#     np.save(f"/home/hunt-stokes/bayesian_optimisation/{measured_pts}.npy", measured_vals)
