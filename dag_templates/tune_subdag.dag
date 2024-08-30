@@ -2,7 +2,7 @@ JOB SELECT_PARAMETERS /home/hunt-stokes/bayesian_optimisation/submit_files/selec
 RETRY SELECT_PARAMETERS 3
 
 JOB MC_SIMULATION     /home/hunt-stokes/bayesian_optimisation/submit_files/simulate.submit
-RETRY MC_SIMULATION 3
+RETRY MC_SIMULATION 5
 
 JOB TIME_RESIDUALS    /home/hunt-stokes/bayesian_optimisation/submit_files/time_residuals.submit
 RETRY TIME_RESIDUALS 3

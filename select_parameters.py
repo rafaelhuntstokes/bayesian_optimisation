@@ -51,26 +51,23 @@ def softmax_normalisation(vec_theta):
 
     return np.exp(vec_theta) / np.sum(np.exp(vec_theta)) 
 
-def sum_normalisation(vec_weights, keep_idx):
+def sum_normalisation(vec_weights, const_idx, var_idx):
     """
-    Normalise each of the input weights by the sum of the weights.
+    Normalise the weights. Keep some weights (const_idx) constant and scale (var_idx) weights
+    to ensure sum = 1.
     """
-
-    # optimiser constant value
-    const = vec_weights[keep_idx]
-    # find the amount the non-optimised weights need to contribute to the whole
-    residual = 1 - const
-
-    # work out a scale factor for the remaining weights
-    scaling  = residual / (np.sum(vec_weights) - const)
-
-    print(f"The optimised parameter is: {const}.\nThe residual is therefore: {residual}.\nThe scale factor is: {scaling}\n.")
-
-    # normalise and reset
-    vec_weights = vec_weights * scaling
-    vec_weights[keep_idx] = const
+    print(vec_weights)
+    print(const_idx)
+    print(var_idx)
+    constant_weights = np.sum(vec_weights[const_idx])
+    variable_weights = np.sum(vec_weights[var_idx])
+    residual         = 1 - constant_weights
+    scale_factor     = residual / variable_weights
     
-    print(f"Sanity check! The weights are: {vec_weights} and they sum to: {np.sum(vec_weights)}.")
+    # apply scaling to variable weights to enforce total sum = 1
+    vec_weights[var_idx] = vec_weights[var_idx] * scale_factor
+
+    print(f"Weight normalisation sanity check: sum of weights is: {np.sum(vec_weights)}.")
 
     return vec_weights
 
@@ -87,9 +84,15 @@ t3       = np.linspace(60, 150, size)
 t4       = np.linspace(200, 500, size)
 tr       = np.linspace(0.1, 2.0, size)
 
-# work out how much weighting 'budget' left after fixing the previous decay constants
-max_weight = log["remaining_weighting_budget"]
-theta    = np.linspace(0.01, max_weight, size)
+"""
+We optimise over the remaining 'weight budget', unless we are doing A1 (free choice) or A4 (specified by 1 - others)
+"""
+max_weight = log["weight_budget"]
+if log["current_parameters"][0] == 1 or log["current_parameters"][0] == 2  or log["current_parameters"][0] == 3:
+    theta = np.linspace(0.01, max_weight, size)
+else:
+    # free choice for A1
+    theta = np.linspace(0.01, 1.0, size) 
 
 # also need to define the length scales over which to tune the constants for each parameter
 l1     = np.linspace(0.5, 5, 50)   # do not make the minimum values too small or it blows the kernel up!
@@ -142,8 +145,12 @@ if iteration == 0:
     # updated_weights    = softmax_normalisation(params_update[4:8])
 
     # only update the weights if we are in the 2 parameter tuning regime - otherwise just tuning tR
-    if len(current_parameters) == 2:
-        updated_weights    = sum_normalisation(params_update[4:8], current_parameters[1]-4)
+    if current_parameters[0] != 8 and current_parameters[0] != 3:
+        # we aren't optimising the rise time or t4 so need to norm the weights
+        keep_idx = np.arange(0, current_parameters[1]-3, 1).astype(int)
+        var_idx  = np.arange(current_parameters[1]-4 + 1, 4, 1).astype(int)
+        print(var_idx)
+        updated_weights    = sum_normalisation(params_update[4:8], keep_idx, var_idx)
         params_update[4:8] = updated_weights
 
     # update the parameters in the JSON log
@@ -235,9 +242,14 @@ else:
         # given the current status of the theta parameters, apply softmax to return normalised weights
         # updated_weights    = softmax_normalisation(params_update[4:8])
 
-        
-        updated_weights    = sum_normalisation(params_update[4:8], current_parameters[1]-4)
+        # if current_parameters[0] != 8:
+        # we aren't optimising the rise time so need to norm the weights
+        keep_idx = np.arange(0, current_parameters[1]-3, 1).astype(int)
+        var_idx  = np.arange(current_parameters[1] -4 + 1, 4, 1).astype(int)
+        updated_weights    = sum_normalisation(params_update[4:8], keep_idx, var_idx)
         params_update[4:8] = updated_weights
+        # updated_weights    = sum_normalisation(params_update[4:8], current_parameters[1]-4)
+        # params_update[4:8] = updated_weights
 
         # check for convergence in the updated parameters
         last_measured   = np.array([log["last_measured"][f"{feature_names[current_parameters[0]]}"], log["last_measured"][f"{feature_names[current_parameters[1]]}"]])
@@ -315,7 +327,7 @@ else:
         create_macro(params_update[0:4], params_update[4:8], params_update[8], material, feature_name)
 
         # check if the sampled point is on a convergence path - i.e. if the next measured point is within 5 % of the previous sample
-        last_measured   = log["last_measured"]["TR"]
+        last_measured   = log["last_measured"][feature_name]
         perc_difference = abs(params_update[8] - last_measured) / last_measured
         print(f"Previous sample was at {last_measured} and new sample is {params_update[8]} ( {perc_difference} % difference ).")
         if perc_difference <= 0.05:

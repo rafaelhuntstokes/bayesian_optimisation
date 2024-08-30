@@ -13,13 +13,25 @@ def update_optimisation_parameters(log, converged_flag):
     """
 
     current_parameters = log["current_parameters"]
-    if current_parameters[-1] == 7:
+    if current_parameters[-1] == 3:
         # we enter the rise time tuning regime
         log["current_parameters"] = [8]
         logfile.write(f"\nBeginning next optimisation of Rise Time (param idx {log['current_parameters']}).")
     elif current_parameters[-1] == 8:
         logfile.write(f"\nWe have finished optimising all parameters. The best solution was: \n{log['global_best']}.\nExiting!")
         sys.exit(0)
+    elif current_parameters[-1] == 6:
+        # we are entering the 1D tuning over T4 (A4 specified by 1-other weights)
+        if converged_flag == False:
+            A1 = log["global_best"]["parameters"]["A1"]
+            A2 = log["global_best"]["parameters"]["A2"]
+            A3 = log["global_best"]["parameters"]["A3"]
+        else:
+            A1 = log["last_measured"]["A1"]
+            A2 = log["last_measured"]["A2"]
+            A3 = log["last_measured"]["A3"]
+        logfile.write(f"\nBeginning optimisation (1D) of T4. A4 specified by 1 - other weights ({1-A1-A2-A3}).")
+        log["current_parameters"] = [3]
     else:
         log["current_parameters"] = [current_parameters[0]+1, current_parameters[1]+1]
         logfile.write(f"\nBeginning next optimisation of param idxs: {log['current_parameters']}.")
@@ -37,12 +49,34 @@ def update_optimisation_parameters(log, converged_flag):
         log["parameters"]["A2"] = log["global_best"]["parameters"]["A2"]
         log["parameters"]["A3"] = log["global_best"]["parameters"]["A3"]
         log["parameters"]["A4"] = log["global_best"]["parameters"]["A4"]
+
     else:
         logfile.write(f"\nConverged! Updating default simulation parameters previous sample:\n{log['last_measured']}.")
+
+        # replace the default parameters with the converged solutuion
+        # update the default simulation parameters with GBest parameters
+        log["parameters"]["T1"] = log["last_measured"]["T1"]
+        log["parameters"]["T2"] = log["last_measured"]["T2"]
+        log["parameters"]["T3"] = log["last_measured"]["T3"]
+        log["parameters"]["T4"] = log["last_measured"]["T4"]
+        log["parameters"]["TR"] = log["last_measured"]["TR"]
+        log["parameters"]["A1"] = log["last_measured"]["A1"]
+        log["parameters"]["A2"] = log["last_measured"]["A2"]
+        log["parameters"]["A3"] = log["last_measured"]["A3"]
+        log["parameters"]["A4"] = log["last_measured"]["A4"]
     
     # reset current iteration
     log["current_iteration"] = 0
     
+    """
+    If we have tuned (T1, A1) or (T2, A2), we update the weight budget
+    """
+    
+    if current_parameters[0] == 0 or current_parameters[0] == 1: 
+        weight_names = ["A1", "A2"]
+        log["weight_budget"] = log["weight_budget"] - log["parameters"][weight_names[current_parameters[0]]]
+        logfile.write(f"\nReduced weight budget for next optimisation to {log['weight_budget']}.")
+
     # update json log file so next set of parameters are chosen for optimising over
     with open("opto_log.JSON", "w") as outlog:
         json.dump(log, outlog, indent = 4)
@@ -75,18 +109,6 @@ with open("/home/hunt-stokes/bayesian_optimisation/post_log.txt", "a") as logfil
             logfile.write(f"\nThe optimisation has CONVERGED. Moving to next parameter optimisation.")
             log["convergence_flags"]["conv_points"] = 0
             log["convergence_flags"][f"{parameter_name}"] = True
-
-            # replace the default parameters with the converged solutuion
-            # update the default simulation parameters with GBest parameters
-            log["parameters"]["T1"] = log["last_measured"]["T1"]
-            log["parameters"]["T2"] = log["last_measured"]["T2"]
-            log["parameters"]["T3"] = log["last_measured"]["T3"]
-            log["parameters"]["T4"] = log["last_measured"]["T4"]
-            log["parameters"]["TR"] = log["last_measured"]["TR"]
-            log["parameters"]["A1"] = log["last_measured"]["A1"]
-            log["parameters"]["A2"] = log["last_measured"]["A2"]
-            log["parameters"]["A3"] = log["last_measured"]["A3"]
-            log["parameters"]["A4"] = log["last_measured"]["A4"]
 
             # we move to the next parameter to tune
             update_optimisation_parameters(log, True)

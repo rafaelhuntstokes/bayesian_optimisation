@@ -160,10 +160,10 @@ if ks_stat < log["global_best"]["objective"]:
     log["global_best"]["parameters"]["A4"] = log["last_measured"]["A4"]
 
     # save what parameter and iterations led to this global best
-    parameter_names = ["T1", "T2", "T3", "T4"]
+    parameter_names = ["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"]
     current_params  = log["current_parameters"]
-    if current_params == 8:
-        log["global_best"]["name"] = f"TR_iter_{log['current_iteration']}"
+    if current_params[0] == 8 or current_params[0] == 3:
+        log["global_best"]["name"] = f"{parameter_names[current_params[0]]}_iter_{log['current_iteration']}"
     else:
         log["global_best"]["name"] = f"{parameter_names[current_params[0]]}_iter_{log['current_iteration']}"
     with open("opto_log.JSON", "w") as outfile:
