@@ -1,0 +1,4 @@
+SUBDAG EXTERNAL RISE_TIME /home/hunt-stokes/bayesian_optimisation/dag_running/opto.dag
+RETRY RISE_TIME ${NUM_ITERS}
+
+SCRIPT POST RISE_TIME /home/hunt-stokes/bayesian_optimisation/executables/terminate_opto.sh

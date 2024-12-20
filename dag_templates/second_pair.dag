@@ -1,0 +1,10 @@
+SUBDAG EXTERNAL DECAY_CONSTANTS_2 /home/hunt-stokes/bayesian_optimisation/dag_running/opto.dag
+RETRY DECAY_CONSTANTS_2 ${NUM_ITERS}
+
+SUBDAG EXTERNAL AMPLITUDES_2 /home/hunt-stokes/bayesian_optimisation/dag_running/opto.dag
+RETRY AMPLITUDES_2 ${NUM_ITERS}
+
+PARENT DECAY_CONSTANTS_2 CHILD AMPLITUDES_2
+
+SCRIPT POST DECAY_CONSTANTS_2 /home/hunt-stokes/bayesian_optimisation/executables/terminate_opto.sh
+SCRIPT POST AMPLITUDES_2 /home/hunt-stokes/bayesian_optimisation/executables/terminate_opto.sh
