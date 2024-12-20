@@ -30,5 +30,15 @@ expensive.
 Since we have a high-dimensional expensive to evaluate black-box function (the data - MC agreement
 as a function of the timing parameters), exhaustive methods, such as gridsearch,
 take a prohibitive amount of time to identify good solutions. However, this is the
-problem statement Bayesian optimisation is best suited for.
+problem statement Bayesian optimisation is best suited for!
+
+## Bayesian Optimisation with Gaussian Processes
+Bayesian optimisation leverages previous samples of the objective function to
+select the next best combination of parameters to sample at. A cheap to evaluate
+approximation of the objective is used (the 'surrogate') alongside an acquisition
+function to select the next parameters.
+
+### The Surrogate: Gaussian Process
+A Gaussian process is a probability distribution over functions. By modelling the
+objective (data - MC agreement) as a Gaussian process, we 
 
