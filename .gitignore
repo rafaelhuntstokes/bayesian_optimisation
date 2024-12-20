@@ -7,3 +7,4 @@ terminate.log
 ./opto_log.JSON
 dag_running
 measured_points
+algo_log.txt
