@@ -2,7 +2,7 @@
 
 JOB_ID=$1
 MACRO_NAME=$2
-cd rat_logs/
+cd /home/hunt-stokes/bayesian_optimisation/rat_logs
 source /home/hunt-stokes/rattus_novus.sh
 
 rm /data/snoplus3/hunt-stokes/bayesian_optimisation_sims/*.root
