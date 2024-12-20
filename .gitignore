@@ -5,3 +5,5 @@ macros
 post_log.txt
 terminate.log
 ./opto_log.JSON
+dag_running
+measured_points
