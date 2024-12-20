@@ -1,6 +1,6 @@
-executable = executables/select_parameters.sh
-log        = condor_logs/select_logs/$(Cluster)_$(Process).log
-output     = condor_logs/select_outputs/$(Cluster)_$(Process).out
-error      = condor_logs/select_errors/$(Cluster)_$(Process).err
+executable = /home/hunt-stokes/bayesian_optimisation/executables/select_parameters.sh
+log        = /home/hunt-stokes/bayesian_optimisation/condor_logs/select_logs/$(Cluster)_$(Process).log
+output     = /home/hunt-stokes/bayesian_optimisation/condor_logs/select_outputs/$(Cluster)_$(Process).out
+error      = /home/hunt-stokes/bayesian_optimisation/condor_logs/select_errors/$(Cluster)_$(Process).err
 request_memory = 1024MB
 queue
