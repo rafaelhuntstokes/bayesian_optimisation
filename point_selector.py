@@ -194,7 +194,7 @@ class PointSelector():
         else:
             return rbf
 
-    def lower_confidence_bound(self, explore = 5):
+    def lower_confidence_bound(self, explore = 4):
         """
         Lower confidence bound acquisition function. Decide the best place to sample
         next.
