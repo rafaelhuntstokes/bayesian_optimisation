@@ -95,7 +95,7 @@ For convenience, we start each iteration with a zero mean prior across the domai
 In this case, the update rules are:
 
 $$
-\mu' (\vec{x}) = \hat{K}_{m,p}
+\mu' (\vec{x}) = \hat{K}_{m,p} (\hat{K}_{m,m} + \delta \mathcal{I})^{-1}
 $$
 
 
