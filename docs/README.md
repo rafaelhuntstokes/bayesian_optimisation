@@ -165,7 +165,7 @@ Since changing any given parameter alters the environment within which other par
 tuned, the algorithm repeats each tuning after updates to other parameters, until
 convergence is reached.
 
-![image](docs/algo_loops.png)
+![image](algo_loops.png)
 
 The diagram shows how pairs of parameters are tuned, before moving to tuning their
 respective amplitudes. Once the amplitudes are tuned, the algorithm returns to tuning
@@ -211,7 +211,7 @@ software.
 functions to compute the posterior mean and covariance function based on previously
 measured points. In addition, the LCB acquisition function is implemented here.
 
-![image](docs/algo_output.png)
+![image](algo_output.png)
 
 The image above shows the surrogate (left), uncertainty (middle) and acquisition function
 (right) for the $(t_1, t_2)$ optimisation loop.
@@ -261,7 +261,7 @@ Where $O_i$ and $M_i$ represent the observed and measured frequencies, respectiv
 The $\chi ^2$ agreement is saved in an updated `measured_points.npy` array for subsequent
 use in `select_parameters.py`.
 
-![image](docs/time_residuals.png)
+![image](time_residuals.png)
 
 The image above shows the observed time residual distributions for the data (black) and
 MC simulations using the Bayesian optimisation result (green), grid search (red) and
@@ -313,7 +313,7 @@ less complex models.
 For each iteration, the $log(\mathcal{L})$ is maximised within the `update_surrogate()`
 function.
 
-![image](docs/ARD.png)
+![image](ARD.png)
 
 The image above shows the $log(\mathcal{L})$ distribution obtained within an iteration
 of the $(t_1, t_2)$ optimisation loop, as a function of length scale.
@@ -323,7 +323,7 @@ end, condor's Direct Acyclic Graph (DAG) structures were utilised. DAGs are exec
 a series of sequential nodes, with subsequent nodes only running once the previous
 are complete.
 
-![image](docs/dag_structure.png)
+![image](dag_structure.png)
 
 As the image shows, there are a number of nested dags. This structure was necessary to
 get around the 'acyclic' part of the direct acyclic graph structure: i.e., acyclic
