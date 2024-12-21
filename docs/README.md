@@ -94,9 +94,7 @@ the mean and covariance functions of the Gaussian process.
 For convenience, we start each iteration with a zero mean prior across the domain.
 In this case, the update rules are:
 
-$
-\mu'(\mathbf{x}) = \hat{K}_{m,p} \left( \hat{K}_{m,m} + \delta I \right)^{-1} \mathbf{F}
-$
+![Equation](https://quicklatex.com/cache3/a4/ql_509686758231f6de1141f9f0a90113a4_l3.png)
 
 $$\hat{\Sigma}' = \hat{K}_{p,p} - \hat{K}_{p,m}(\hat{K}_{m,m} + \delta \mathcal{I})^{-1}\hat{K}_{m,p} $$
 
@@ -145,8 +143,7 @@ In an standard calibration, it is necessary to have four terms in the scintillat
 emission time PDF. This leads to a challenging nine-dimensional optimisation, with
 parameters:
 
-$$ 
-\vec{X} = \begin{bmatrix} 
+$$ \vec{X} = \begin{pmatrix} 
                 t_1 \\ 
                 t_2 \\
                 t_3 \\
@@ -156,8 +153,7 @@ $$
                 A_2 \\
                 A_3 \\
                 A_4
-             \end{bmatrix}
-$$
+             \end{pmatrix}$$
 And the constraint $ \sum_i A_i = 1$.
 
 Given that the surrogate must be defined upon a sufficiently fine mesh of points
