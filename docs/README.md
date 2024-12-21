@@ -142,17 +142,8 @@ In an standard calibration, it is necessary to have four terms in the scintillat
 emission time PDF. This leads to a challenging nine-dimensional optimisation, with
 parameters:
 
-$$ \vec{X} = \begin{pmatrix} 
-                t_1 \\ 
-                t_2 \\
-                t_3 \\
-                t_4 \\
-                t_r \\
-                A_1 \\
-                A_2 \\
-                A_3 \\
-                A_4
-             \end{pmatrix}$$
+![Equation](https://quicklatex.com/cache3/cc/ql_7372b2e5dee7a4ac104e58108202afcc_l3.png)
+
 And the constraint $ \sum_i A_i = 1$.
 
 Given that the surrogate must be defined upon a sufficiently fine mesh of points
