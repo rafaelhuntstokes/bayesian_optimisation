@@ -96,8 +96,7 @@ In this case, the update rules are:
 
 ![Equation](https://quicklatex.com/cache3/a4/ql_509686758231f6de1141f9f0a90113a4_l3.png)
 
-$$\hat{\Sigma}' = \hat{K}_{p,p} - \hat{K}_{p,m}(\hat{K}_{m,m} + \delta \mathcal{I})^{-1}\hat{K}_{m,p} $$
-
+![Equation](https://quicklatex.com/cache3/d6/ql_b14cf54998e0c4d94dc5ec551c0e13d6_l3.png)
 
 Where $\mu'$ and $\hat{\Sigma}'$ are the mean and covariance function defining the
 posterior Gaussian process, $\hat{K}_{x,y}$ are the covariance matrices between
