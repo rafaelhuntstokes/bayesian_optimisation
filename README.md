@@ -39,6 +39,28 @@ approximation of the objective is used (the 'surrogate') alongside an acquisitio
 function to select the next parameters.
 
 ### The Surrogate: Gaussian Process
-A Gaussian process is a probability distribution over functions. By modelling the
-objective (data - MC agreement) as a Gaussian process, we 
+The surrogate function is a cheap to evaluate approximation of the objective. In
+this case, we use a Gaussian process as the surrogate.
+
+A Gaussian process is a probability distribution over a family of functions, defined
+by a mean, $\mu$, and covariance, $\Sigma$, function. The mean function gives the
+expected value of the Gaussian process at a given point, $\vec{x}$, and the covariance
+function provides an estimate of the uncertainty on the mean. Thus, we model each
+point in the domain as a multivariate Gaussian distribution, with dimensionality
+equal to the number of features (timing parameters) under consideration.
+
+The covariance function, $\Sigma$, determines the family of functions over which
+the Gaussian process is defined. $\Sigma$ defines how function values vary as a function
+of distance. For example, the Radial Basis Kernel (RBF) encodes smoothly varying
+functions as a function of separation:
+
+$$ RBF(x, x') = exp(-\frac{||x - x'||^2}{2l^2})$$
+
+Given two points, $x_1$ and $x_2$, the covariance function is defined as:
+
+$$ \Sigma = \begin{pmatrix} 
+                \text{RBF}(x_1, x_1) & \text{RBF}(x_1, x_2) \\ 
+                \text{RBF}(x_2, x_1) & \text{RBF}(x_2, x_2) 
+            \end{pmatrix}
+$$
 
