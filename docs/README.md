@@ -113,8 +113,8 @@ next objective function sample point. This work uses the Lower Confidence Bound
 
 $$\text{LCB}(\vec{X}) = \mu(\vec{X}) - \lambda \sigma(\vec{X})$$
 
-Where $\mu(\vec{X})$ is the mean function of the GP surrogate at each point $\vec{X}$, 
-$\sigma(\vec{X})$ is the respective uncertainty and $\lambda$ is a tunable parameter
+Where $\mu(\mathbf{X})$ is the mean function of the GP surrogate at each point $\vec{X}$, 
+$\sigma(\mathbf{X})$ is the respective uncertainty and $\lambda$ is a tunable parameter
 determining the emphasis placed on exploitation or exploration. For small values of 
 $\lambda$, exploitation of previously found good solutions is maximised. This
 encourages faster convergence, with the risk of becoming stuck in a local minimum.
