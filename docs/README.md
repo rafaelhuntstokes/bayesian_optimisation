@@ -65,8 +65,7 @@ the covariance function is defined as:
 $$ \hat{K}_{1,2} = \begin{pmatrix} 
 \text{RBF}(x_1, x_1) & \text{RBF}(x_1, x_2) \\ 
 \text{RBF}(x_2, x_1) & \text{RBF}(x_2, x_2) \\
-\end{pmatrix}
-+ \delta \mathcal{I}
+\end{pmatrix} + \delta \mathcal{I}
 $$
 
 It is best practice to add a small noise term to the diagonal, $\delta \mathcal{I}$. This is used to
