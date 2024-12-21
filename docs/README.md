@@ -73,7 +73,7 @@ It is best practice to add a small noise term to the diagonal, $\delta \mathcal{
 model measurement error and ensure the matrix remains positive-definite, which is
 essential for the matrix inversions calculated in the posterior update rules below.
 
-![image](docs/gp_samples.png)
+![image](gp_samples.png)
 
 The image above shows the mean function (black line) and associated error (red) band
 as a function of $t_1$. The grey functions are examples of samples of individual
