@@ -1,9 +1,9 @@
 
-        executable = executables/submit_simulations.sh
-        arguments  = $(Process) TR.mac
-        log        = condor_logs/sim_logs/$(Process).log
-        output     = condor_logs/sim_outputs/$(Process).out
-        error      = condor_logs/sim_errors/$(Process).err
+        executable = /home/hunt-stokes/bayesian_optimisation/executables/submit_simulations.sh
+        arguments  = $(Process) T3_T4.mac
+        log        = /home/hunt-stokes/bayesian_optimisation/condor_logs/sim_logs/$(Process).log
+        output     = /home/hunt-stokes/bayesian_optimisation/condor_logs/sim_outputs/$(Process).out
+        error      = /home/hunt-stokes/bayesian_optimisation/condor_logs/sim_errors/$(Process).err
         request_memory = 1024MB
-        queue 50
+        queue 10
         

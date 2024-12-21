@@ -1,0 +1,19 @@
+SUBDAG EXTERNAL FIRST_TUNE /home/hunt-stokes/bayesian_optimisation/dag_running/first_pair.dag
+RETRY FIRST_TUNE ${NUM_ITERS}
+ABORT-DAG-ON FIRST_TUNE 100 RETURN 0
+
+SUBDAG EXTERNAL SECOND_TUNE /home/hunt-stokes/bayesian_optimisation/dag_running/second_pair.dag
+RETRY SECOND_TUNE ${NUM_ITERS}
+ABORT-DAG-ON SECOND_TUNE 100 RETURN 0
+
+
+SUBDAG EXTERNAL RISE_TIME /home/hunt-stokes/bayesian_optimisation/dag_running/rise_time.dag
+RETRY RISE_TIME ${RISE_REPEATS}
+ABORT-DAG-ON RISE_TIME 100 RETURN 0
+
+PARENT FIRST_TUNE CHILD SECOND_TUNE
+PARENT SECOND_TUNE CHILD RISE_TIME
+
+SCRIPT POST FIRST_TUNE /home/hunt-stokes/bayesian_optimisation/executables/terminate_block.sh
+SCRIPT POST SECOND_TUNE /home/hunt-stokes/bayesian_optimisation/executables/terminate_block.sh
+SCRIPT POST RISE_TIME /home/hunt-stokes/bayesian_optimisation/executables/terminate_block.sh

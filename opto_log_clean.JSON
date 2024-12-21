@@ -1,55 +1,82 @@
 {
-    "parameters": {
-        "T1": 5.0,
-        "T2": 10.0,
-        "T3": 100.0,
-        "T4": 300.0,
-        "TR": 0.8,
-        "A1": 0.8,
-        "A2": 0.1,
-        "A3": 0.05,
-        "A4": 0.05
-    },
-    "last_measured": {
-        "T1": 5.0,
-        "T2": 10.0,
-        "T3": 100.0,
-        "T4": 300.0,
-        "TR": 0.8,
-        "A1": 0.8,
-        "A2": 0.1,
-        "A3": 0.05,
-        "A4": 0.05
-    },
-    "convergence_flags": {
-        "conv_points": 0,
-        "T1": false,
-        "T2": false,
-        "T3": false,
-        "T4": false,
-        "TR": false
-    },
-    "current_parameters": [
-        0,
-        4
-    ],
-    "current_iteration": 0,
-    "max_iteration": 10,
-    "global_best": {
-        "name" : "none",
-        "objective": 1e9,
-        "parameters": {
-            "T1" : 999,
-            "T2" : 999,
-            "T3" : 999,
-            "T4" : 999,
-            "TR" : 999,
-            "A1" : 999,
-            "A2" : 999,
-            "A3" : 999,
-            "A4" : 999
+    "iteration_info":{
+        "full_algo_iter": 0,
+        "max_iter": 2,
+        "initial_parameters": {
+            "T1": 5.2,
+            "T2": 15.7,
+            "T3": 100.0,
+            "T4": 300.0,
+            "TR": 1.22,
+            "A1": 0.75,
+            "A2": 0.15,
+            "A3": 0.05,
+            "A4": 0.05
+        },
+        "current_block": {
+            "block_name": "FIRST_PAIR",
+            "prev_params": {
+                "T1": 5.2,
+                "T2": 15.7,
+                "T3": 100.0,
+                "T4": 300.0,
+                "TR": 1.22,
+                "A1": 0.75,
+                "A2": 0.15,
+                "A3": 0.05,
+                "A4": 0.05
+            },
+            "block_best_params": {
+                "T1": 5.2,
+                "T2": 15.7,
+                "T3": 100.0,
+                "T4": 300.0,
+                "TR": 1.22,
+                "A1": 0.75,
+                "A2": 0.15,
+                "A3": 0.05,
+                "A4": 0.05,
+                "obj": 1e10
+            },
+            "iteration": 0,
+            "max_iter": 2,
+            "param_sampling":{
+                "current_parameters": [
+                    0,
+                    1
+                ],
+                "param_sample_iter": 0,
+                "conv_points": 0,
+                "max_iter": 20,
+                "last_measured": {
+                    "T1": 5.2,
+                    "T2": 15.7,
+                    "T3": 100.0,
+                    "T4": 300.0,
+                    "TR": 1.22,
+                    "A1": 0.75,
+                    "A2": 0.15,
+                    "A3": 0.05,
+                    "A4": 0.05
+                }
+            }  
         }
     },
-    "terminate_flag": 0,
-    "remaining_weighting_budget": 1.0
+    "parameters": {
+        "T1": 5.2,
+        "T2": 15.7,
+        "T3": 100.0,
+        "T4": 300.0,
+        "TR": 1.22,
+        "A1": 0.75,
+        "A2": 0.15,
+        "A3": 0.05,
+        "A4": 0.05,
+        "obj": 999
+    },
+    "convergence_flags": {
+        "FIRST_PAIR": false,
+        "SECOND_PAIR": false,
+        "RISE_TIME": false
+    }
 }

@@ -99,6 +99,10 @@ def surrogate_uncert_acquistion_1d(mean, uncertainty, acquisition, axis, name, i
     axes[0].scatter(measured_pts[:-1,0], measured_pts[:-1,1], color = "black", marker = "o")
     axes[0].fill_between(axis[:,0], np.atleast_1d(mean-uncertainty), np.atleast_1d(mean+uncertainty), alpha = 0.6, color = "red")
 
+    axes[0].set_xlabel(name)
+    axes[0].set_ylabel("Objective")
+    axes[1].set_xlabel(name)
+    axes[1].set_ylabel("Acquisition Function")
     axes[1].plot(axis, acquisition, color = "black")
 
     fig.tight_layout()
@@ -127,18 +131,18 @@ def time_residual_agreement(data, model, name):
     with open("opto_log.JSON", "r") as logfile:
         log = json.load(logfile)
     
-    current_parameters = log["current_parameters"]
+    current_parameters = log["iteration_info"]["current_block"]["param_sampling"]["current_parameters"]
     # find the parameter values used
-    parameter_names    = np.array(["T1", "T2", "T3", "T4", "A1", "A2", "A3", "A4", "TR"])
+    parameter_names    = np.array(["T1", "T2", "T3", "T4", "T4", "A1", "A2", "A3", "A4"])
     names              = parameter_names[current_parameters]
     fig, axes = plt.subplots(nrows = 1, ncols = 3, figsize = (15, 5))
     binning = np.arange(-5, 350, 1)
     if len(names) == 2:
-        values      = [log["last_measured"][names[0]], log["last_measured"][names[1]]]
+        values      = [log["parameters"][names[0]], log["parameters"][names[1]]]
         axes[0].plot([], [], linestyle = "", label = f"{names[0]}: {values[0]:.3f} ns | {names[1]} : {values[1]:.3f}")
         axes[1].plot([], [], linestyle = "", label = f"{names[0]}: {values[0]:.3f} ns | {names[1]} : {values[1]:.3f}")
     else:
-        values      = log["last_measured"]["TR"]
+        values      = log["parameters"]["TR"]
         axes[0].plot([], [], linestyle = "", label = f"Rise Time: {values:.3f} ns")
         axes[1].plot([], [], linestyle = "", label = f"Rise Time: {values:.3f} ns")
     
