@@ -54,7 +54,7 @@ the Gaussian process is defined. $\Sigma$ defines how function values vary as a 
 of distance. For example, the Radial Basis Kernel (RBF) encodes smoothly varying
 functions as a function of separation:
 
-$$ \text{RBF}(x, x') = exp\left(-\frac{||x - x'||^2}{2l^2}\right)$$
+$$ \text{RBF}(x, x') = exp\left(-\frac{\lVert x - x'\rVert ^2}{2l^2}\right)$$
 
 Given two points, $x_1$ and $x_2$, the covariance function is defined as:
 
