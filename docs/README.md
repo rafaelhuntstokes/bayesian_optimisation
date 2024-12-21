@@ -94,9 +94,9 @@ the mean and covariance functions of the Gaussian process.
 For convenience, we start each iteration with a zero mean prior across the domain.
 In this case, the update rules are:
 
-$$
-\mu' (\vec{x}) = \hat{K}_{m,p} \hat{K}_{m,m}
-$$
+$$ \mu'(\vec{x}) = \hat{K}_{m,p}(\hat{K}_{m,m} + \delta \mathcal{I})^{-1}\vec{F}$$
+
+$$\hat{\Sigma}' = \hat{K}_{p,p} - \hat{K}_{p,m}(\hat{K}_{m,m} + \delta \mathcal{I})^{-1}\hat{K}_{m,p} $$
 
 
 Where $\mu'$ and $\hat{\Sigma}'$ are the mean and covariance function defining the
