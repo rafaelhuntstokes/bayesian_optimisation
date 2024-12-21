@@ -98,8 +98,6 @@ $$
 \mu'(\vec{x}) = \hat{K}_{m,p}(\hat{K}_{m,m} + \delta \mathcal{I})^{-1}\vec{F}
 $$
 
-$$ \mu'(\vec{x}) $$
-$$\hat{\Sigma}' = \hat{K}_{p,p} - \hat{K}_{p,m}(\hat{K}_{m,m} + \delta \mathcal{I})^{-1}\hat{K}_{m,p} $$
 
 Where $\mu'$ and $\hat{\Sigma}'$ are the mean and covariance function defining the
 posterior Gaussian process, $\hat{K}_{x,y}$ are the covariance matrices between
