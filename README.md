@@ -62,9 +62,10 @@ $$ \Sigma = \begin{pmatrix}
                 \text{RBF}(x_1, x_1) & \text{RBF}(x_1, x_2) \\ 
                 \text{RBF}(x_2, x_1) & \text{RBF}(x_2, x_2) 
             \end{pmatrix}
++ \delta \mathcal{I}
 $$
 
-It is best practice to add a small noise term to the diagonal. This is used to
+It is best practice to add a small noise term to the diagonal, $\delta \mathcal{I}$. This is used to
 model measurement error and ensure the matrix remains positive-definite, which is
 essential for the matrix inversions calculated in the posterior update rules below.
 
