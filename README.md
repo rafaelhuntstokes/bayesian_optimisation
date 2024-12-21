@@ -64,3 +64,8 @@ $$ \Sigma = \begin{pmatrix}
             \end{pmatrix}
 $$
 
+It is best practice to add a small noise term to the diagonal. This is used to
+model measurement error and ensure the matrix remains positive-definite, which is
+essential for the matrix inversions calculated in the posterior update rules below.
+
+#### Test
