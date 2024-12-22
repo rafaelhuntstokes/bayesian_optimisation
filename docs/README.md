@@ -15,14 +15,14 @@ distribution must be obtained.
 
 This optimisation package was developed to improve the efficiency of calibrating
 the SNO+ scintillation photon emission timing model. Scintillation photons are
-generated according to a probabilty distribution, given empirically by:
+generated according to a probability distribution, given empirically by:
 
 $$ P(t) = \sum_{i=1}^4 A_i \frac{e^{-t/t_i} - e^{-t/t_r}}{t_i - t_r} $$
 
 The shape of this distribution is governed by the time constants, $t_i$, rise-time, $t_r$, 
 and the relative weightings, $A_i$. These parameters must be optimised.
 
-Unfortunately, the observed PMT hit time distibutions are dependent not just on the 
+Unfortunately, the observed PMT hit time distributions are dependent not just on the 
 scintillator emission time distribution. Other processes, such as scattering, reflections
 and the PMT responses themselves are convolved with the scintillator emission timing.
 Thus, it is impossible to create an analytic relationship between the timing parameters
@@ -50,10 +50,12 @@ by a mean, $\mu$, and covariance, $\Sigma$, function. The mean function gives th
 expected value of the Gaussian process at a given point, $\vec{x}$, and the covariance
 function provides an estimate of the uncertainty on the mean. Thus, we model each
 point in the domain as a multivariate Gaussian distribution, with dimensionality
-equal to the number of features (timing parameters) under consideration.
+equal to the number of features (timing parameters) under consideration. The mean of
+the infinite family of functions defined by the GP is taken as the surrogate's value
+at each point.
 
 The covariance function, $\Sigma$, determines the family of functions over which
-the Gaussian process is defined. $\Sigma$ defines how function values vary as a function
+the GP is defined. $\Sigma$ defines how function values vary as a function
 of distance. For example, the Radial Basis Kernel (RBF) encodes smoothly varying
 functions as a function of separation:
 
@@ -86,7 +88,7 @@ updates its best guess of the form of the objective function. This is done by
 calculating the conditional probability distribution in light of the previous
 samples. 
 
-This highlights another reason for choosing a Gaussian process as the surrogate:
+This highlights another reason for choosing a GP as the surrogate:
 the conditional probability distribution remains Gaussian, with an updated mean
 and covariance function. Thus, to compute the posterior, we only need to update
 the mean and covariance functions of the Gaussian process.
@@ -165,7 +167,7 @@ and weights.
 
 After the two pairs of parameters are tuned, the rise time optimisation begins.
 Since the rise time appears in every term in the emission time PDF, it is tuned
-separately. Again, the algorithm returns to the first pair tuning afer the rise
+separately. Again, the algorithm returns to the first pair tuning after the rise
 time converges, and this recursion continues until all parameters have converged.
 
 Convergence is defined as a < 5 % change in parameter value relative to the previous
@@ -278,7 +280,7 @@ the LCB acquisition function. The exploration coefficient is set to $\lambda = 5
 
 Automatic Relevance Determination (ARD) is the method used to automate the optimisation
 of the length scale parameters in the RBF kernel. A length scale is defined for each
-feature, parametising the sensitivity of the objective to each feature. For example,
+feature, parameterising the sensitivity of the objective to each feature. For example,
 points with similar $t_1$ values, but vastly different $t_4$, will still yield similar
 objective function samples. Thus, these points should yield large RBF covariance values,
 despite the naive $\vec{l} = 1$ kernel suggesting they are very distant points.
@@ -348,7 +350,7 @@ decay isotope loading.
 The main changes necessary are:
 1. Update dataset array used in `time_residuals.py` for $\chi^2$ calculations. See my thesis
 for details on collecting a new dataset (Chapter 3)
-2. Change liquid scintillator material / optics table specificed in `RAT` MC macro file.
+2. Change liquid scintillator material / optics table specified in `RAT` MC macro file.
 This is simply achieved by altering the string in `select_parameters.py` 
 
 ### Customisation and Algorithm Improvements
@@ -358,8 +360,8 @@ the best choices for our dataset. In the future, it may be desirable to compare
 performance using other kernels, such as the Matern, and/or other acquisition functions.
 
 For example, the Matern kernel encodes a less smoothly varying family of functions than
-the RBF, which may well be more approprate for these data. In addition, more sophisticated
-acquisition functions, such as expected improvement or probabaility of improvement,
+the RBF, which may well be more appropriate for these data. In addition, more sophisticated
+acquisition functions, such as expected improvement or probability of improvement,
 may converge faster.
 
 To add these functions to the Bayesian optimiser package, one simply needs to add
